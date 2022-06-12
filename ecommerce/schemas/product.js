@@ -12,5 +12,29 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: "name",
+      title: "Name",
+      type: "string",
+    },
+    {
+      name: "slug",
+      Name: "Slug",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLength: 90,
+      },
+    },
+    {
+      name: "price",
+      Name: "Price",
+      type: "number",
+    },
+    {
+      name: "details",
+      Name: "Details",
+      type: "string",
+    },
   ],
 };
