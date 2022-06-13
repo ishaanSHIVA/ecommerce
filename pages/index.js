@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Product, FooterBanner, HeroBanner } from "../components";
+import { Product, FooterBanner } from "../components";
+import { HeroBanner } from "../components/HeroBanner";
 import { client } from "../lib/client";
 
 const Home = (props) => {
-  console.log(props);
+  console.log(HeroBanner);
   return (
     <>
       <HeroBanner heroBanner={props.bannerData.length && props.bannerData[0]} />
@@ -17,7 +18,9 @@ const Home = (props) => {
           <Product key={product._id} product={product} />
         ))}
       </div>
-      <FooterBanner></FooterBanner>
+      <FooterBanner
+        footerBanner={props.bannerData && props.bannerData[0]}
+      ></FooterBanner>
     </>
   );
 };
@@ -29,7 +32,7 @@ export const getServerSideProps = async () => {
 
   // sanity dahsboards for all banners
   const bannerQuery = '*[_type == "banner"]';
-  const bannerData = await client.fetch(bannerQuery);
+  const bannerData = await client.fetch(bannerQuery);``
 
   return {
     props: { products, bannerData },

@@ -1,10 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
 
-const Footer = (props) => {
-  return <div>Footer</div>;
-};
-
-Footer.propTypes = {};
+function Footer() {
+  return (
+    <div className="footer-container">
+      <p>2022 JSM Headphones All rights reserved.</p>
+      <p className="icons">
+        <AiFillInstagram></AiFillInstagram>
+        <AiOutlineTwitter></AiOutlineTwitter>
+      </p>
+    </div>
+  );
+}
 
 export default Footer;
