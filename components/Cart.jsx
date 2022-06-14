@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/state.context";
 import { urlFor } from "../lib/client";
-import { getStripe } from "../lib/getStripe";
+import getStripe from "../lib/getStripe";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -26,6 +26,9 @@ const Cart = () => {
   } = useStateContext();
 
   const handleCheckout = async () => {
+    toast("This is just for testing so use 4242 4242 4242 4242", {
+      icon: "👏",
+    });
     const stripe = await getStripe();
 
     const response = await fetch("/api/stripe", {
@@ -33,14 +36,12 @@ const Cart = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cartItems),
+      body: JSON.stringify({ cartItems }),
     });
-
     if (response.statusCode === 500) return;
 
     const data = await response.json();
-
-    toast.loading("Redirecting...");
+    // toast.success("Toasting!!!!!");
     stripe.redirectToCheckout({ sessionId: data.id });
   };
   return (
