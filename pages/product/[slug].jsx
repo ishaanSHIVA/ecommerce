@@ -15,7 +15,7 @@ const ProductDetails = (props) => {
   // console.log(props);
   const { image, name, details, price } = props.product;
   const [index, setIndex] = useState(0);
-  const { decreaseQuantity, increaseQuantity, quantity, onAdd } =
+  const { decreaseQuantity, increaseQuantity, quantity, onAdd, setShowCart } =
     useStateContext();
   // product: {
   //   _createdAt: '2022-06-11T22:47:22Z',
@@ -29,6 +29,12 @@ const ProductDetails = (props) => {
   //   price: 99,
   //   slug: { _type: 'slug', current: 'headphones' }
   // },
+
+  const handleBuyNow = () => {
+    onAdd(props.product, quantity);
+
+    setShowCart(true);
+  };
   return (
     <div className="">
       <div className="product-detail-container">
@@ -43,6 +49,7 @@ const ProductDetails = (props) => {
           <div className="small-images-container">
             {image?.map((item, i) => (
               <img
+                id={i}
                 src={urlFor(item)}
                 className={
                   i == "index" ? "small-image selected-image" : "small-image"
@@ -90,7 +97,7 @@ const ProductDetails = (props) => {
             >
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick={() => {}}>
+            <button type="button" className="buy-now" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
