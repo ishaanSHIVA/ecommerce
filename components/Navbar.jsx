@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <p className="logo">
-        <Link href="/">JSM Headphones</Link>
+        <Link href="https://x.com/gurujicoder">Ecommerce Clone by Ishaan Rajpal</Link>
       </p>
       <button
         type="button"
